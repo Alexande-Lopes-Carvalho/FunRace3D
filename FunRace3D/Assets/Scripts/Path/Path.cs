@@ -8,10 +8,10 @@ public class Path : MonoBehaviour {
                                                           rawPoints = value;}}
 
     private List<Vector3> points;
-    public List<Vector3> Points{get => rawPoints;}
+    public List<Vector3> Points{get => points;}
 
     [SerializeField] private float maxRadiusBezier = 1.0f;
-    private int sample = 3;
+    private int sample = 15;
     private void Awake(){
         for(int i = 0 ; i < rawPoints.Count; ++i){
             rawPoints[i] = rawPoints[i].x*transform.right + rawPoints[i].y*transform.up + rawPoints[i].z*transform.forward + transform.position;
@@ -66,7 +66,14 @@ public class Path : MonoBehaviour {
         return res;
     }
 
-    private void RefreshBezier(){
+    public void RefreshBezier(){
         points = ComputeBezier(rawPoints);
+    }
+
+    public void RefreshPath(){
+        for(int i = 0 ; i < rawPoints.Count; ++i){
+            rawPoints[i] = rawPoints[i].x*transform.right + rawPoints[i].y*transform.up + rawPoints[i].z*transform.forward + transform.position;
+        }
+        RefreshBezier();
     }
 }

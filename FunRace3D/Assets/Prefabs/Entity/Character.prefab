@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathFollower: {fileID: 8543198201292849346}
-  speed: 1
+  speed: 3.5
 --- !u!114 &8543198201292849346
 MonoBehaviour:
   m_ObjectHideFlags: 0

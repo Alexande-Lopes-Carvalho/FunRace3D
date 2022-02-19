@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IPointProvider{
+public interface IPointProvider{
     Vector3 GetNextPoint();
 }
 
@@ -15,7 +15,7 @@ public class PathFollower : MonoBehaviour {
     private float tolerance = 0.001f;
     // Start is called before the first frame update
     private void Start() {
-        currentPoint = provider.GetNextPoint();
+        currentPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -24,17 +24,21 @@ public class PathFollower : MonoBehaviour {
     }
 
     private void Move(float distToMove){
+        Debug.Log(distToMove + " " + currentPoint);
         while(distToMove > tolerance){
-            if(currentPoint == null){
-                return;
-            }
             Vector3 v = currentPoint-transform.position;
             if(v.magnitude < tolerance){
+                Vector3 oldPoint = currentPoint;
                 currentPoint = provider.GetNextPoint();
+                if(oldPoint == currentPoint){
+                    return;
+                }
                 continue;
             }
             float maxDist = Mathf.Min(v.magnitude, distToMove);
-            transform.position = v.normalized*maxDist;
+            transform.LookAt(transform.position+v.normalized*maxDist);
+            transform.position += v.normalized*maxDist;
+            
             distToMove -= maxDist;
         }
     }

@@ -21,7 +21,8 @@ public class Character : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
-        pathFollower.Speed = (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))? speed : 0;
+        pathFollower.Speed = (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space))? speed : 0;
+        //Debug.Log(pathFollower.Speed);
     }
 
     private void RefreshMoveAnimation(){

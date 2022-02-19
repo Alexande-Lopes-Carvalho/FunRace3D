@@ -15,7 +15,7 @@ public class LevelComponent : MonoBehaviour {
     public Vector3 GetEnd(){
         return path.Points[path.Points.Count-1];
     }
-    public bool hasNextPoint(){
+    public bool HasNextPoint(){
         return index < path.Points.Count;
     }
     public Vector3 GetNextPoint(){
@@ -27,5 +27,9 @@ public class LevelComponent : MonoBehaviour {
     }
     public Quaternion GetCameraRotation(Transform player){
         return cameraState.Rotation(player);
+    }
+
+    public void RefreshPath(){
+        path.RefreshPath();
     }
 }

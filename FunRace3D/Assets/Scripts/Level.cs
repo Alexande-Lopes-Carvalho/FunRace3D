@@ -5,17 +5,20 @@ using UnityEngine;
 public class Level : MonoBehaviour, IPointProvider {
     [SerializeField] private PathFollower character;
     [SerializeField] private List<GameObject> levelComponentsPrefab;
-    private List<LevelComponent> levelComponents;
+    [SerializeField] private Transform levelComponentTransform;
+    private Queue<LevelComponent> levelComponents;
 
     // Start is called before the first frame update
     void Awake() {
-        levelComponents = new List<LevelComponent>();
+        levelComponents = new Queue<LevelComponent>();
         Vector3 spawn = transform.position;
         foreach(GameObject k in levelComponentsPrefab){
             GameObject g = Instantiate(k);
             LevelComponent l = g.GetComponent<LevelComponent>();
             g.transform.position = spawn-l.GetStart();
-            levelComponents.Add(l);
+            g.transform.parent = levelComponentTransform;
+            l.RefreshPath();
+            levelComponents.Enqueue(l);
             spawn = g.transform.position+(l.GetEnd()-l.GetStart());
         }
         character.transform.position = transform.position;
@@ -25,5 +28,17 @@ public class Level : MonoBehaviour, IPointProvider {
     // Update is called once per frame
     void Update() {
         
+    }
+
+    public Vector3 GetNextPoint(){
+        if(levelComponents.Count == 0){
+            character.enabled = false;
+            return character.transform.position;
+        }
+        if(!levelComponents.Peek().HasNextPoint()){
+            levelComponents.Dequeue();
+            return GetNextPoint();
+        }
+        return levelComponents.Peek().GetNextPoint();
     }
 }
