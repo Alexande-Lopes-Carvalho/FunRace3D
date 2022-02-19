@@ -16,7 +16,7 @@ public class TeleportTo : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider collision) {
-        Debug.Log("pass " + collision.gameObject.tag);
+        //Debug.Log("pass " + collision.gameObject.tag);
         if(collision.gameObject.tag == "Enemy"){
             collision.transform.position += v;
         }

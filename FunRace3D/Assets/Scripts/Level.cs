@@ -3,29 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Level : MonoBehaviour, IPointProvider {
-    [SerializeField] private PathFollower character;
-    [SerializeField] private List<GameObject> levelComponentsPrefab;
-    [SerializeField] private Transform levelComponentTransform;
+    [SerializeField] protected PathFollower character;
+    [SerializeField] protected List<GameObject> levelComponentsPrefab;
+    [SerializeField] protected Transform levelComponentTransform;
     private Camera cam;
     public Camera Cam{get => cam; set => cam = value;}
-    private Queue<LevelComponent> levelComponents;
+    protected Queue<LevelComponent> levelComponents;
 
-    private FCloserTo closerTo;
+    protected FCloserTo closerTo;
     private Vector3 oldCamPos;
     private Quaternion oldCamRot;
 
     // Start is called before the first frame update
-    void Awake() {
+    public virtual void Awake() {
         levelComponents = new Queue<LevelComponent>();
         Vector3 spawn = transform.position;
         foreach(GameObject k in levelComponentsPrefab){
-            GameObject g = Instantiate(k);
-            LevelComponent l = g.GetComponent<LevelComponent>();
-            g.transform.position = spawn-l.GetStart();
-            g.transform.parent = levelComponentTransform;
-            l.RefreshPath();
-            levelComponents.Enqueue(l);
-            spawn = g.transform.position+(l.GetEnd()-l.GetStart());
+            spawn = SpawnLevelComponent(k, spawn);
         }
         character.transform.position = transform.position;
         character.Provider = this;
@@ -58,5 +52,15 @@ public class Level : MonoBehaviour, IPointProvider {
             return GetNextPoint();
         }
         return levelComponents.Peek().GetNextPoint();
+    }
+
+    protected Vector3 SpawnLevelComponent(GameObject k, Vector3 spawn){
+        GameObject g = Instantiate(k);
+        LevelComponent l = g.GetComponent<LevelComponent>();
+        g.transform.position = spawn-l.GetStart();
+        g.transform.parent = levelComponentTransform;
+        l.RefreshPath();
+        levelComponents.Enqueue(l);
+        return g.transform.position+(l.GetEnd()-l.GetStart());
     }
 }

@@ -20,7 +20,7 @@ public class PathEditor : Editor {
             Handles.DrawLine(raw[i], raw[i+1], 3);
         }
         p = path.ComputeBezier(raw);
-        Handles.color = Color.grey;
+        Handles.color = Color.red;
         for(int i = 0; i < p.Count-1; ++i){
             Handles.DrawLine(p[i], p[i+1], 3);
         }

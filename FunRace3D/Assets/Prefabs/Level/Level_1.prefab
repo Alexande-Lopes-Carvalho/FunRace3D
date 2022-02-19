@@ -49,6 +49,7 @@ MonoBehaviour:
   levelComponentsPrefab:
   - {fileID: 2533851462856828382, guid: 2f660361c45415644b3c5e77532182a2, type: 3}
   - {fileID: 9096086214890938692, guid: 19eae962033dd584da29ae53cb4ac257, type: 3}
+  - {fileID: 7771915959020246486, guid: 9adcf941c367d9b4985f2661dd4c3ac8, type: 3}
   - {fileID: 9096086214890938692, guid: 19eae962033dd584da29ae53cb4ac257, type: 3}
   levelComponentTransform: {fileID: 3407639890091293144}
 --- !u!1 &3407639890091293151
