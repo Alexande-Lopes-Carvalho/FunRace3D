@@ -54,7 +54,7 @@ MonoBehaviour:
   - {x: 6.3, y: 0, z: 5}
   - {x: 6.3, y: 0, z: 7.5}
   maxRadiusBezier: 2.97
-  sample: 15
+  sample: 30
 --- !u!1 &3116983780548441399
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,6 +56,7 @@ public class Level : MonoBehaviour, IPointProvider {
     public Vector3 GetNextPoint(){
         if(levelComponents.Count == 0){
             character.enabled = false;
+            LevelManager.Instance.EndLevel(true);
             return character.transform.position;
         }
         if(!levelComponents.Peek().HasNextPoint()){

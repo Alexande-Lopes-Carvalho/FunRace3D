@@ -71,10 +71,10 @@ public class Path : MonoBehaviour {
     }
 
     public void RefreshPath(){
-        Debug.Log(Time.time + "Refresh path " + name);
+        //Debug.Log(Time.time + "Refresh path " + name);
         for(int i = 0 ; i < rawPoints.Count; ++i){
             rawPoints[i] = rawPoints[i].x*transform.right + rawPoints[i].y*transform.up + rawPoints[i].z*transform.forward + transform.position;
-            Debug.Log(Time.time + "  " + rawPoints[i]);
+            //Debug.Log(Time.time + "  " + rawPoints[i]);
         }
         RefreshBezier();
     }

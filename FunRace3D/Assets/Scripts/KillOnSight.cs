@@ -27,12 +27,14 @@ public class KillOnSight : MonoBehaviour {
                 continue;
             }
             //Debug.Log("passb");
-            if(Mathf.Acos(Vector3.Dot(v.normalized, transform.forward))> angleOfViewRadians){
+            if(Mathf.Acos(Mathf.Min(Mathf.Max(Vector3.Dot(v.normalized, transform.forward), -1), 1)) > angleOfViewRadians){
                 continue;
             }
             //Debug.Log("passc");
             RaycastHit hit;
             if(Physics.Raycast(transform.position+offset, v, out hit, distOfView) && hit.transform == k.transform){
+                Debug.Log("Saw ! ");
+                Debug.Log(v.sqrMagnitude + " " + sqrDistOfView + " " + v.normalized + " " + transform.forward + " " + angleOfViewRadians + " " + angleOfViewDegree + " " + Vector3.Dot(v.normalized, transform.forward));
                 LevelManager.Instance.EndLevel(false);
             }
             //Debug.Log("passd");
