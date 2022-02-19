@@ -17,7 +17,7 @@ public class KillOnCollide : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.tag == "Player"){
-            LevelManager.Instance.EndLevel();
+            LevelManager.Instance.EndLevel(false);
         }
     }
 }

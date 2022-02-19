@@ -9,6 +9,9 @@ public class LevelManager : MonoBehaviour {
     private Dictionary<string, GameObject> levelList;
     [SerializeField] private Transform levelTransform;
     [SerializeField] Camera camera;
+
+    private List<Character> players;
+    public List<Character> Players{get => players;}
     // Start is called before the first frame update
     void Start() {
         if(instance != null){
@@ -17,6 +20,7 @@ public class LevelManager : MonoBehaviour {
         instance = this;
         levelList = new Dictionary<string, GameObject>();
         levelList.Add("Level_1", level1);
+        players = new List<Character>();
         LaunchLevel("Level_1");
     }
 
@@ -36,8 +40,15 @@ public class LevelManager : MonoBehaviour {
         
     }
 
-    public void EndLevel(){
+    public void EndLevel(bool hasWon){
         Time.timeScale = 0;
         LaunchMenu();
+    }
+
+    public void Register(Character c){
+        players.Add(c);
+    }
+    public void Remove(Character c){
+        players.Remove(c);
     }
 }

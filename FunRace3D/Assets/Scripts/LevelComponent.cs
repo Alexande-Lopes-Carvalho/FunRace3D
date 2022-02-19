@@ -28,8 +28,4 @@ public class LevelComponent : MonoBehaviour {
     public Quaternion GetCameraRotation(Transform player){
         return cameraState.Rotation(player);
     }
-
-    public void RefreshPath(){
-        path.RefreshPath();
-    }
 }

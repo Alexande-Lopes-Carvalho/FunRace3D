@@ -11,7 +11,7 @@ public class Path : MonoBehaviour {
     public List<Vector3> Points{get => points;}
 
     [SerializeField] private float maxRadiusBezier = 1.0f;
-    private int sample = 15;
+    [SerializeField] private int sample = 15;
     private void Awake(){
         for(int i = 0 ; i < rawPoints.Count; ++i){
             rawPoints[i] = rawPoints[i].x*transform.right + rawPoints[i].y*transform.up + rawPoints[i].z*transform.forward + transform.position;
@@ -21,7 +21,7 @@ public class Path : MonoBehaviour {
 
     // Start is called before the first frame update
     private void Start() {
-        
+        RefreshPath();
     }
 
     // Update is called once per frame
@@ -71,8 +71,10 @@ public class Path : MonoBehaviour {
     }
 
     public void RefreshPath(){
+        Debug.Log(Time.time + "Refresh path " + name);
         for(int i = 0 ; i < rawPoints.Count; ++i){
             rawPoints[i] = rawPoints[i].x*transform.right + rawPoints[i].y*transform.up + rawPoints[i].z*transform.forward + transform.position;
+            Debug.Log(Time.time + "  " + rawPoints[i]);
         }
         RefreshBezier();
     }

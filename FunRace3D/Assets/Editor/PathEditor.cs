@@ -7,7 +7,7 @@ using UnityEditor;
 public class PathEditor : Editor {
     public void OnSceneGUI(){
         Path path = target as Path;
-        if(path == null || path.RawPoints.Count <= 1){
+        if(path == null || path.RawPoints == null || path.RawPoints.Count <= 1){
             return;
         }
         Vector3 offset = new Vector3(0, 1, 0);

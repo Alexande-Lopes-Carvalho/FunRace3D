@@ -21,8 +21,16 @@ public class Character : MonoBehaviour {
         closerTo = new FCloserTo(transitionSpeed, 0, 0);
     }
 
+    private void Start(){
+        LevelManager.Instance.Register(this);
+    }
+
     private void FixedUpdate(){
         RefreshMoveAnimation();
+    }
+
+    public void OnDestroy(){
+        LevelManager.Instance.Remove(this);
     }
 
     // Update is called once per frame
