@@ -8,6 +8,7 @@ interface IPointProvider{
 
 public class PathFollower : MonoBehaviour {
     [SerializeField] private IPointProvider provider;
+    public IPointProvider Provider{get => provider; set => provider = value;}
     private Vector3 currentPoint;
     private float speed = 1;
     public float Speed{get => speed; set => speed = value;}
