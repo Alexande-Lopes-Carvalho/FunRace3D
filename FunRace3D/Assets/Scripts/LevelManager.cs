@@ -31,4 +31,13 @@ public class LevelManager : MonoBehaviour {
         l.Cam = camera;
         level.transform.parent = levelTransform;
     }
+
+    public void LaunchMenu(){
+        
+    }
+
+    public void EndLevel(){
+        Time.timeScale = 0;
+        LaunchMenu();
+    }
 }

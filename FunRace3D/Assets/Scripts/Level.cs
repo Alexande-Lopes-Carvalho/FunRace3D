@@ -49,10 +49,12 @@ public class Level : MonoBehaviour, IPointProvider {
             return character.transform.position;
         }
         if(!levelComponents.Peek().HasNextPoint()){
-            levelComponents.Dequeue();
-            oldCamPos = cam.transform.position;
-            oldCamRot = cam.transform.rotation;
-            closerTo = new FCloserTo(1500, 1, 0);
+            LevelComponent l = levelComponents.Dequeue();
+            if(levelComponents.Count != 0 && l.GetCameraPosition(character.transform) != levelComponents.Peek().GetCameraPosition(character.transform)){
+                oldCamPos = cam.transform.position;
+                oldCamRot = cam.transform.rotation;
+                closerTo = new FCloserTo(1500, 1, 0);
+            }
             return GetNextPoint();
         }
         return levelComponents.Peek().GetNextPoint();

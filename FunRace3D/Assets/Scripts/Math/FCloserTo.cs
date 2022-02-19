@@ -15,7 +15,7 @@ public class FCloserTo {
         timeCount += deltaTimeMs;
         double value = ( (System.Math.Tanh( ( (timeCount/ (duration) )*375+86)*0.006 ) -System.Math.Tanh(86*0.006) ) / (1-System.Math.Tanh(86*0.006)) ) / CONST;
         //double value = (timeCount/duration);
-        Debug.Log(value + " " + timeCount + " " + duration);
+        //Debug.Log(value + " " + timeCount + " " + duration);
         return (float)(value*objective+toAdd);
     }
 }

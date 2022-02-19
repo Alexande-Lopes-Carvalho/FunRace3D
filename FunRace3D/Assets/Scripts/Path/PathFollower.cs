@@ -24,14 +24,14 @@ public class PathFollower : MonoBehaviour {
     }
 
     private void Move(float distToMove){
-        //Debug.Log(distToMove + " " + currentPoint);
-        while(distToMove > tolerance){
+        //Debug.Log(Time.time + " " + distToMove + " " + currentPoint);
+        for(int i = 0;distToMove > tolerance && i < 50;){
             Vector3 v = currentPoint-transform.position;
             if(v.magnitude < tolerance){
                 Vector3 oldPoint = currentPoint;
                 currentPoint = provider.GetNextPoint();
                 if(oldPoint == currentPoint){
-                    return;
+                    ++i;
                 }
                 continue;
             }

@@ -30,7 +30,7 @@ public class Character : MonoBehaviour {
         bool newPosition = Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space);
         if(newPosition^position){
             position = newPosition;
-            closerTo = new FCloserTo(transitionSpeed, (position)? speed : -pathFollower.Speed, pathFollower.Speed/speed);
+            closerTo = new FCloserTo(transitionSpeed, (position)? speed : -pathFollower.Speed/speed, pathFollower.Speed/speed);
         }
         pathFollower.Speed = closerTo.GetValue(Time.deltaTime*1000.0f);
         //Debug.Log(pathFollower.Speed);
