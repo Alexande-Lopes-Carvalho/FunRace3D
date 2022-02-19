@@ -600,6 +600,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4230667776213792834}
   - component: {fileID: 7806555895769850424}
+  - component: {fileID: 8573371796299582456}
+  - component: {fileID: 8543198201292849346}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -642,6 +644,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8573371796299582456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602186193281377016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b56e04b69c9adc4788ee1a6a787e898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathFollower: {fileID: 8543198201292849346}
+  speed: 1
+--- !u!114 &8543198201292849346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602186193281377016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b77dfadfe88fcb41903a7cf039cbcda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3623418607656116957
 GameObject:
   m_ObjectHideFlags: 0
