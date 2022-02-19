@@ -238,15 +238,19 @@ PrefabInstance:
     - target: {fileID: 8226857103279340164, guid: 6f461d0d10dc294428898bd67114525e, type: 3}
       propertyPath: level1
       value: 
-      objectReference: {fileID: 3407639889194216745, guid: 8236b2dce463bbf4a9f4e00549fe603d, type: 3}
+      objectReference: {fileID: 6578765303323739490, guid: a4884e90584f8714dbbbf9eccd76b8ee, type: 3}
     - target: {fileID: 8226857103279340164, guid: 6f461d0d10dc294428898bd67114525e, type: 3}
       propertyPath: level2
       value: 
-      objectReference: {fileID: 8387444606641699166, guid: 48974f8414d2bc04399fc0217099e7a0, type: 3}
+      objectReference: {fileID: 3407639889194216745, guid: 8236b2dce463bbf4a9f4e00549fe603d, type: 3}
     - target: {fileID: 8226857103279340164, guid: 6f461d0d10dc294428898bd67114525e, type: 3}
       propertyPath: endLevel
       value: 
       objectReference: {fileID: 1623694194}
+    - target: {fileID: 8226857103279340164, guid: 6f461d0d10dc294428898bd67114525e, type: 3}
+      propertyPath: levelProc
+      value: 
+      objectReference: {fileID: 7768163691155522320, guid: 48974f8414d2bc04399fc0217099e7a0, type: 3}
     - target: {fileID: 8226857103279340164, guid: 6f461d0d10dc294428898bd67114525e, type: 3}
       propertyPath: endLevelText
       value: 

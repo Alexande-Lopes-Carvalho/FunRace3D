@@ -9,11 +9,15 @@ public class KillOnSight : MonoBehaviour {
     [SerializeField] private float distOfView;
     public float DistOfView{get => distOfView;}
     private float sqrDistOfView;
+    [SerializeField] private float distTooClose;
+    public float DistTooClose{get => distTooClose;}
+    private float sqrTooClose;
     [SerializeField] private Vector3 offset;
     public Vector3 Offset{get => offset;}
     // Start is called before the first frame update
     void Start() {
         sqrDistOfView = distOfView*distOfView; 
+        sqrTooClose = distTooClose*distTooClose;
         angleOfViewRadians = Mathf.Deg2Rad*angleOfViewDegree;
     }
 
@@ -24,6 +28,10 @@ public class KillOnSight : MonoBehaviour {
             //Debug.Log("passa");
             Vector3 v = k.transform.position-transform.position;
             if(v.sqrMagnitude > sqrDistOfView ){
+                continue;
+            }
+            if(v.sqrMagnitude < sqrTooClose ){
+                LevelManager.Instance.EndLevel(false);
                 continue;
             }
             //Debug.Log("passb");
