@@ -24,7 +24,7 @@ public class PathFollower : MonoBehaviour {
     }
 
     private void Move(float distToMove){
-        Debug.Log(distToMove + " " + currentPoint);
+        //Debug.Log(distToMove + " " + currentPoint);
         while(distToMove > tolerance){
             Vector3 v = currentPoint-transform.position;
             if(v.magnitude < tolerance){

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3885847369496817482}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 7.5, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9096086214890938691}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: {fileID: 9096086214890938693}
-  cameraState: {fileID: 0}
+  cameraState: {fileID: 5624880239159880594}
 --- !u!114 &9096086214890938693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,9 +105,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rawPoints:
   - {x: 0, y: 0, z: 0}
-  - {x: 3, y: 0, z: 2.5}
-  - {x: 0, y: 0, z: 5}
-  - {x: -3, y: 0, z: 7.5}
+  - {x: 0, y: 0, z: 2.5}
+  - {x: -1.25, y: 0, z: 3.75}
+  - {x: -2.5, y: 0, z: 5}
   - {x: 0, y: 0, z: 10}
   maxRadiusBezier: 1
 --- !u!1 &9096086215139478262

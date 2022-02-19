@@ -6,7 +6,13 @@ public class Level : MonoBehaviour, IPointProvider {
     [SerializeField] private PathFollower character;
     [SerializeField] private List<GameObject> levelComponentsPrefab;
     [SerializeField] private Transform levelComponentTransform;
+    private Camera cam;
+    public Camera Cam{get => cam; set => cam = value;}
     private Queue<LevelComponent> levelComponents;
+
+    private FCloserTo closerTo;
+    private Vector3 oldCamPos;
+    private Quaternion oldCamRot;
 
     // Start is called before the first frame update
     void Awake() {
@@ -23,11 +29,18 @@ public class Level : MonoBehaviour, IPointProvider {
         }
         character.transform.position = transform.position;
         character.Provider = this;
+        closerTo = new FCloserTo(0, 1, 0);
     }
 
     // Update is called once per frame
     void Update() {
-        
+        if(levelComponents.Count != 0){
+            Vector3 p = levelComponents.Peek().GetCameraPosition(character.transform);
+            Quaternion q = levelComponents.Peek().GetCameraRotation(character.transform);
+            float value = closerTo.GetValue(Time.deltaTime*1000.0f);
+            cam.transform.position = Vector3.Slerp(oldCamPos, p, value);
+            cam.transform.rotation = Quaternion.Slerp(oldCamRot, q, value);
+        }
     }
 
     public Vector3 GetNextPoint(){
@@ -37,6 +50,9 @@ public class Level : MonoBehaviour, IPointProvider {
         }
         if(!levelComponents.Peek().HasNextPoint()){
             levelComponents.Dequeue();
+            oldCamPos = cam.transform.position;
+            oldCamRot = cam.transform.rotation;
+            closerTo = new FCloserTo(1500, 1, 0);
             return GetNextPoint();
         }
         return levelComponents.Peek().GetNextPoint();

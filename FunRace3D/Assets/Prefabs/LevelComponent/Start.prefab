@@ -202,5 +202,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236ab1e3a9bb0974692bc4e87c729eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 5.71, z: -4.17}
-  lookOffset: {x: 0, y: 5, z: 0}
+  offset: {x: 0, y: 7, z: -5}
+  lookOffset: {x: 0, y: 2, z: 0}
